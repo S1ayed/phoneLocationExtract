@@ -5,6 +5,7 @@
 - `phone_extract.py`：批量提取中国手机号前7位（号段前缀）到“运营商 + 属地”的映射关系，并输出为 `phone_location_table.yaml`
 - `phone_query.py`：加载映射表后，交互式查询用户输入的7位号段
 
+- 注：进行提取和查询需要手机号码与IP属地映射表原始文件，本仓库提供一个示例文件`86_zh`, 用户也可以自行通过逆向工程提取出其他映射表文件进行提取和查询
 ---
 
 ## 目录结构
@@ -26,7 +27,7 @@
 - Python 3.10+
 - pip
 
-依赖：
+所需依赖：
 - phonenumbers
 - pyyaml
 
@@ -72,12 +73,6 @@ pip install phonenumbers pyyaml
 python phone_extract.py
 ```
 
-指定解释器运行（Windows 示例）：
-
-```powershell
-C:/Users/<UserName>/AppData/Local/Programs/Python/Python310/python.exe D:/your_workspace/phone_extract.py
-```
-
 输出：
 - `phone_location_table.yaml`（主数据文件）
 
@@ -95,12 +90,6 @@ C:/Users/<UserName>/AppData/Local/Programs/Python/Python310/python.exe D:/your_w
 
 ```bash
 python phone_query.py
-```
-
-指定解释器运行（Windows 示例）：
-
-```powershell
-C:/Users/<UserName>/AppData/Local/Programs/Python/Python310/python.exe D:/your_workspace/phone_query.py
 ```
 
 交互示例：
@@ -126,7 +115,7 @@ IP属地: 北京市
 
 ## 推荐使用流程
 
-1. 先通过逆向获取映射表文件（如86_zh）
+1. 通过逆向获取映射表文件（如`86_zh`）
 2. 先运行 `phone_extract.py` 生成或更新 `phone_location_table.yaml`
 3. 再运行 `phone_query.py` 进行交互查询
 
@@ -150,6 +139,7 @@ python phone_extract.py
 ```
 
 ### Q3：输入后提示格式错误
+
 `phone_query.py` 只接受 **7位纯数字**（如 `1380013`）且接受格式仅为 **3位运营商号码 + 4位地区号码**，暂不支持查询其他格式的号码。
 
 ---
@@ -158,7 +148,15 @@ python phone_extract.py
 ## 相关文章
     中国大陆手机号分析：https://www.cnblogs.com/slayedxx/p/19844865
     从手机内部提取电话号码与IP属地映射表：https://www.cnblogs.com/slayedxx/p/19858201
-
 ---
 
 
+
+## 免责声明
+1. 本仓库提供的代码、文档和相关文章仅供学习、研究与技术交流使用。
+2. 禁止将本项目用于任何违反法律法规、侵犯他人隐私或其他不当用途。
+3. 本项目不提供任何形式的商业担保，不保证数据的完整性、准确性、实时性与适用性。
+4. 因使用本项目造成的任何直接或间接损失，项目作者与贡献者不承担责任。
+5. 使用者应自行确认数据来源的合法性，并遵守相关平台协议与当地法律法规。
+
+---
